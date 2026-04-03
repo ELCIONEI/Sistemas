@@ -1,0 +1,6 @@
+2026/02/24-15:04:01.412 3234 Reusing MANIFEST C:\IA\RecFala\perfil_automacao\Default\Local Storage\leveldb/MANIFEST-000001
+2026/02/24-15:04:01.447 3234 Recovering log #83
+2026/02/24-15:04:01.454 3234 Reusing old log C:\IA\RecFala\perfil_automacao\Default\Local Storage\leveldb/000083.log 
+2026/02/24-15:08:31.685 45b0 Level-0 table #87: started
+2026/02/24-15:08:31.694 45b0 Level-0 table #87: 28106 bytes OK
+2026/02/24-15:08:31.696 45b0 Delete type=0 #83

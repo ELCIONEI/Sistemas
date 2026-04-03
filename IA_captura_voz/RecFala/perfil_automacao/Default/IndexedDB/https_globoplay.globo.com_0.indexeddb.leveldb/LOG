@@ -1,0 +1,41 @@
+2026/02/23-07:51:27.333 2e2c Creating DB C:\IA\RecFala\perfil_automacao\Default\IndexedDB\https_globoplay.globo.com_0.indexeddb.leveldb since it was missing.
+2026/02/23-07:51:27.340 2e2c Reusing MANIFEST C:\IA\RecFala\perfil_automacao\Default\IndexedDB\https_globoplay.globo.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/02/23-07:51:27.615 1948 Level-0 table #5: started
+2026/02/23-07:51:27.618 1948 Level-0 table #5: 3037 bytes OK
+2026/02/23-07:51:27.620 1948 Delete type=0 #3
+2026/02/23-07:51:27.621 1948 Manual compaction at level-0 from '\x00\x03\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x04\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/02/23-07:53:46.711 2c60 Level-0 table #7: started
+2026/02/23-07:53:46.718 2c60 Level-0 table #7: 64866 bytes OK
+2026/02/23-07:53:46.719 2c60 Delete type=0 #4
+2026/02/23-07:53:46.720 2c60 Manual compaction at level-0 from '\x00\x07\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/02/23-07:53:48.722 2c60 Level-0 table #9: started
+2026/02/23-07:53:48.724 2c60 Level-0 table #9: 9194 bytes OK
+2026/02/23-07:53:48.726 2c60 Delete type=0 #6
+2026/02/23-07:53:48.726 2c60 Manual compaction at level-0 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at '\x00\x04\x01\x02\x01-\x00[\x00D\x00E\x00F\x00A\x00U\x00L\x00T\x00]\x00!\x001\x00:\x008\x004\x006\x001\x001\x005\x009\x003\x005\x005\x003\x007\x00:\x00w\x00e\x00b\x00:\x00b\x000\x00f\x00e\x003\x002\x004\x00e\x00d\x001\x004\x00e\x008\x004\x001\x000' @ 1476 : 1
+2026/02/23-07:53:48.727 2c60 Compacting 1@0 + 1@1 files
+2026/02/23-07:53:48.827 2c60 Generated table #10@0: 699 keys, 37602 bytes
+2026/02/23-07:53:48.827 2c60 Compacted 1@0 + 1@1 files => 37602 bytes
+2026/02/23-07:53:48.828 2c60 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/02/23-07:53:48.830 2c60 Delete type=2 #9
+2026/02/23-07:53:48.831 2c60 Manual compaction at level-0 from '\x00\x04\x01\x02\x01-\x00[\x00D\x00E\x00F\x00A\x00U\x00L\x00T\x00]\x00!\x001\x00:\x008\x004\x006\x001\x001\x005\x009\x003\x005\x005\x003\x007\x00:\x00w\x00e\x00b\x00:\x00b\x000\x00f\x00e\x003\x002\x004\x00e\x00d\x001\x004\x00e\x008\x004\x001\x000' @ 1476 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/02/23-07:53:48.832 2c60 Manual compaction at level-1 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at '\x00\x06\x00\x00\xc8\x11\x00m\x00y\x00-\x00v\x00i\x00d\x00e\x00o\x00s\x00-\x00h\x00i\x00s\x00t\x00o\x00r\x00y' @ 1170 : 1
+2026/02/23-07:53:48.833 2c60 Compacting 1@1 + 1@2 files
+2026/02/23-07:53:48.919 2c60 Generated table #11@1: 251 keys, 33301 bytes
+2026/02/23-07:53:48.919 2c60 Compacted 1@1 + 1@2 files => 33301 bytes
+2026/02/23-07:53:48.920 2c60 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/02/23-07:53:48.921 2c60 Delete type=2 #10
+2026/02/23-07:53:48.921 2c60 Manual compaction at level-1 from '\x00\x06\x00\x00\xc8\x11\x00m\x00y\x00-\x00v\x00i\x00d\x00e\x00o\x00s\x00-\x00h\x00i\x00s\x00t\x00o\x00r\x00y' @ 1170 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/02/23-09:37:00.363 2e2c Level-0 table #13: started
+2026/02/23-09:37:00.382 2e2c Level-0 table #13: 125653 bytes OK
+2026/02/23-09:37:00.384 2e2c Delete type=2 #5
+2026/02/23-09:37:00.384 2e2c Delete type=2 #7
+2026/02/23-09:37:00.384 2e2c Delete type=0 #8
+2026/02/23-09:37:00.386 2e2c Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2026/02/23-09:37:00.386 2e2c Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x08\x02\x02\x01\x06\x00e\x00v\x00e\x00n\x00t\x00s' @ 1711 : 1
+2026/02/23-09:37:00.386 2e2c Compacting 1@1 + 1@2 files
+2026/02/23-09:37:00.395 2e2c Generated table #14@1: 356 keys, 56526 bytes
+2026/02/23-09:37:00.395 2e2c Compacted 1@1 + 1@2 files => 56526 bytes
+2026/02/23-09:37:00.396 2e2c compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/02/23-09:37:00.397 2e2c Delete type=2 #11
+2026/02/23-09:37:00.397 2e2c Delete type=2 #13
+2026/02/23-09:37:00.398 2e2c Manual compaction at level-1 from '\x00\x08\x02\x02\x01\x06\x00e\x00v\x00e\x00n\x00t\x00s' @ 1711 : 1 .. (end); will stop at (end)
