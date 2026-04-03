@@ -1,0 +1,90 @@
+{% extends "cabecalho.html" %}
+
+{% block title %}Cadastrar Líder em Treinamento{% endblock %}
+
+{% block content %}
+    <div class="flex items-center mb-8">
+        <a href="{{ url_for('cadastros') }}" class="text-slate-600 font-semibold py-2 pr-4 mr-4 rounded-lg hover:bg-slate-200 transition-colors duration-300">
+            &larr; Voltar
+        </a>
+        <h2 class="text-2xl font-bold text-slate-700">Formulário de Líder em Treinamento</h2>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow-md max-w-2xl mx-auto">
+        <form action="{{ url_for('cad_lider_treinamento') }}" method="POST" class="space-y-6">
+            
+            <!-- Campos Pessoais -->
+            <div>
+                <label for="nome" class="block text-sm font-semibold text-slate-600 mb-1">Nome Completo</label>
+                <input type="text" id="nome" name="nome" required class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-semibold text-slate-600 mb-1">E-mail</label>
+                <input type="email" id="email" name="email" class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="data_nascimento" class="block text-sm font-semibold text-slate-600 mb-1">Data de Nascimento</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="telefone" class="block text-sm font-semibold text-slate-600 mb-1">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- Menus de Seleção para Vínculos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="id_lider" class="block text-sm font-semibold text-slate-600 mb-1">Líder Responsável</label>
+                    <select id="id_lider" name="id_lider" required class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        <option value="" disabled selected>Selecione um líder...</option>
+                        {% for lider in lideres %}
+                            <option value="{{ lider.id }}">{{ lider.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="id_colider" class="block text-sm font-semibold text-slate-600 mb-1">Co-líder Responsável</label>
+                    <select id="id_colider" name="id_colider" required class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        <option value="" disabled selected>Selecione um co-líder...</option>
+                         {% for colider in colideres %}
+                            <option value="{{ colider.id }}">{{ colider.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+             <div>
+                <label for="funcao_ministerial" class="block text-sm font-semibold text-slate-600 mb-1">Função Ministerial</label>
+                <input type="text" id="funcao_ministerial" name="funcao_ministerial" class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <!-- Botão de Envio -->
+            <div class="pt-4">
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-md hover:bg-blue-700 transition duration-300">
+                    Salvar Líder em Treinamento
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+<!-- Bloco de Scripts para o Alerta de Confirmação -->
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const isSuccess = urlParams.get('success');
+
+        if (isSuccess) {
+            const novoCadastro = confirm('Líder em treinamento cadastrado com sucesso! Deseja realizar um novo cadastro?');
+            
+            if (novoCadastro) {
+                window.history.replaceState({}, document.title, "{{ url_for('cad_lider_treinamento') }}");
+            } else {
+                window.location.href = "{{ url_for('cadastros') }}";
+            }
+        }
+    });
+</script>
+{% endblock %}

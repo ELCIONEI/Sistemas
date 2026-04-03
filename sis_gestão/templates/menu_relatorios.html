@@ -1,0 +1,60 @@
+{% extends "cabecalho.html" %}
+
+{% block title %}Menu de Relatórios{% endblock %}
+
+{% block content %}
+    <!-- Cabeçalho do sub-menu com botão Voltar -->
+    <div class="flex items-center mb-8">
+        <a href="{{ url_for('dashboard') }}" class="text-slate-600 font-semibold py-2 pr-4 mr-4 rounded-lg hover:bg-slate-200 transition-colors duration-300">
+            &larr; Voltar
+        </a>
+        <h2 class="text-2xl font-bold text-slate-700">Menu de Relatórios</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+        
+        <!-- Botões de Relatórios -->
+        <!-- NOTA: Por enquanto, os links (href) apontam para '#'. Vamos ativá-los um por um. -->
+
+        <a href="{{ url_for('relatorio_grms') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/grm.png') }}" alt="GRMs" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Registro de GRMs</h3>
+        </a>
+        
+        <a href="{{ url_for('relatorio_membros') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/usuario.jpg') }}" alt="Membros" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Registro de Membros</h3>
+        </a>
+
+        <a href="{{ url_for('relatorio_supervisores') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/lider.png') }}" alt="Supervisores" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Registro de Supervisores</h3>
+        </a>
+
+        <a href="{{ url_for('relatorio_lideres') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/lider_grm.jpg') }}" alt="Líderes" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Registro de Líderes</h3>
+        </a>
+
+        <a href="{{ url_for('relatorio_colideres') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/usuario1.jpg') }}" alt="Co-líderes" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Registro de Co-líderes</h3>
+        </a>
+
+        <a href="{{ url_for('relatorio_lideres_treinamento') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/treinamento.jpg') }}" alt="Líderes em Treinamento" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Líderes em Treinamento</h3>
+        </a>
+
+        <a href="{{ url_for('relatorio_visitantes') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/visitante.jpg') }}" alt="Visitantes" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Registro de Visitantes</h3>
+        </a>
+        
+        <a href="{{ url_for('relatorio_convertidos') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/consolidados.jpg') }}" alt="Convertidos" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Registro de Convertidos</h3>
+        </a>
+        
+    </div>
+{% endblock %}

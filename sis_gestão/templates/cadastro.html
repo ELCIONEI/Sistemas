@@ -1,0 +1,58 @@
+{% extends "cabecalho.html" %}
+
+{% block title %}Menu de Cadastros{% endblock %}
+
+{% block content %}
+    <div class="flex items-center mb-8">
+        <a href="{{ url_for('dashboard') }}" class="text-slate-600 font-semibold py-2 pr-4 mr-4 rounded-lg hover:bg-slate-200 transition-colors duration-300">
+            &larr; Voltar
+        </a>
+        <h2 class="text-2xl font-bold text-slate-700">Menu de Cadastros</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+        
+        <a href="{{ url_for('cad_supervisor') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/lider.png') }}" alt="Supervisor" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Cadastrar Supervisor</h3>
+        </a>
+        
+        <a href="{{ url_for('cad_lider') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/lider_grm.jpg') }}" alt="Líder" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Cadastrar Líder</h3>
+        </a>
+
+         <a href="{{ url_for('cad_colider') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/usuario1.jpg') }}" alt="Co-líder" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Cadastrar Co-líder</h3>
+        </a>
+
+        <a href="{{ url_for('cad_lider_treinamento') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/treinamento.jpg') }}" alt="Líder em Treinamento" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Líder em Treinamento</h3>
+        </a>
+
+        <a href="{{ url_for('cad_membro') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/usuario.jpg') }}" alt="Membro" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Cadastrar Membro</h3>
+        </a>
+
+        <a href="{{ url_for('cad_visitante') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/visitante.jpg') }}" alt="Visitante" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Cadastrar Visitante</h3>
+        </a>
+
+        <a href="{{ url_for('cad_grm') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/grm.png') }}" alt="GRM" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Registrar GRM</h3>
+        </a>
+
+        <a href="{{ url_for('cad_convertido') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/consolidados.jpg') }}" alt="Registrar Convertido" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Registrar Convertido</h3>
+        </a>
+        
+
+        
+    </div>
+{% endblock %}

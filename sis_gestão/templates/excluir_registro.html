@@ -1,0 +1,152 @@
+{% extends "cabecalho.html" %}
+
+{% block title %}Excluir Registro{% endblock %}
+
+{% block content %}
+    <div class="flex items-center mb-8">
+        <a href="{{ url_for('dashboard') }}" class="text-slate-600 font-semibold py-2 pr-4 mr-4 rounded-lg hover:bg-slate-200 transition-colors duration-300">
+            &larr; Voltar
+        </a>
+        <h2 class="text-2xl font-bold text-slate-700">Excluir Registro</h2>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow-md">
+        <div class="mb-6">
+            <label for="tipo_registro" class="block text-sm font-medium text-slate-600 mb-1">O que você deseja excluir?</label>
+            <select id="tipo_registro" name="tipo_registro" class="w-full max-w-sm p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                <option value="" disabled selected>Selecione uma categoria</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="lider">Líder</option>
+                <option value="colider">Co-líder</option>
+                <option value="membro">Membro</option>
+                <option value="grm">GRM</option>
+            </select>
+        </div>
+
+        <div id="busca_container" class="hidden mb-6">
+            <label for="busca_nome" class="block text-sm font-medium text-slate-600 mb-1">Digite o nome para buscar</label>
+            <input type="text" id="busca_nome" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Comece a digitar...">
+        </div>
+
+        <div id="resultados_busca" class="mt-4 space-y-2"></div>
+
+        <div id="modal_confirmacao" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div class="bg-white rounded-lg shadow-xl p-8 max-w-lg w-full">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">Confirmar Exclusão</h3>
+                <p class="text-slate-600 mb-6">Você tem certeza que deseja excluir permanentemente o seguinte registro?</p>
+                <div id="detalhes_exclusao" class="bg-slate-50 p-4 rounded-md border border-slate-200 mb-6 text-sm"></div>
+                <div class="flex justify-end space-x-4">
+                    <button id="btn_cancelar" class="py-2 px-5 font-semibold rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300">Cancelar</button>
+                    <button id="btn_confirmar_exclusao" class="py-2 px-5 font-semibold rounded-lg bg-red-600 text-white hover:bg-red-700">Sim, Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Referências aos elementos do HTML
+    const tipoSelect = document.getElementById('tipo_registro');
+    const buscaContainer = document.getElementById('busca_container');
+    const buscaInput = document.getElementById('busca_nome');
+    const resultadosDiv = document.getElementById('resultados_busca');
+    const modal = document.getElementById('modal_confirmacao');
+    const detalhesDiv = document.getElementById('detalhes_exclusao');
+    const btnCancelar = document.getElementById('btn_cancelar');
+    const btnConfirmar = document.getElementById('btn_confirmar_exclusao');
+
+    let itemParaExcluir = null; // Guarda as informações do item selecionado
+
+    // Mostra/Esconde o campo de busca
+    tipoSelect.addEventListener('change', function() {
+        buscaContainer.classList.toggle('hidden', !this.value);
+        buscaInput.value = '';
+        resultadosDiv.innerHTML = '';
+        if (this.value) buscaInput.focus();
+    });
+
+    // Busca em tempo real ao digitar
+    buscaInput.addEventListener('keyup', function() {
+        const tipo = tipoSelect.value;
+        const query = this.value;
+
+        if (query.length < 2) {
+            resultadosDiv.innerHTML = '';
+            return;
+        }
+
+        fetch(`/api/search/${tipo}?q=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                resultadosDiv.innerHTML = '';
+                if (data.length > 0) {
+                    data.forEach(item => {
+                        resultadosDiv.innerHTML += `
+                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border">
+                                <span class="text-slate-800 font-medium">${item.nome}</span>
+                                <button class="btn-excluir text-red-600 hover:text-red-800 font-semibold" data-id="${item.id}" data-type="${tipo}">
+                                    Excluir
+                                </button>
+                            </div>
+                        `;
+                    });
+                } else {
+                    resultadosDiv.innerHTML = '<p class="text-slate-500 p-3">Nenhum resultado encontrado.</p>';
+                }
+            });
+    });
+
+    // --- NOVA LÓGICA PARA CONFIRMAÇÃO E EXCLUSÃO ---
+
+    // Ouve cliques na área de resultados
+    resultadosDiv.addEventListener('click', function(e) {
+        // Verifica se o clique foi em um botão de excluir
+        if (e.target.classList.contains('btn-excluir')) {
+            const id = e.target.dataset.id;
+            const type = e.target.dataset.type;
+            itemParaExcluir = { id, type }; // Salva o item a ser excluído
+
+            // Busca os detalhes do item
+            fetch(`/api/details/${type}/${id}`)
+                .then(response => response.json())
+                .then(details => {
+                    // Monta a lista de detalhes para mostrar no modal
+                    let detailsHtml = '<ul>';
+                    for (const key in details) {
+                        detailsHtml += `<li class="py-1"><strong class="font-semibold text-slate-600">${key}:</strong> ${details[key]}</li>`;
+                    }
+                    detailsHtml += '</ul>';
+                    detalhesDiv.innerHTML = detailsHtml;
+                    modal.classList.remove('hidden'); // Mostra o modal
+                });
+        }
+    });
+
+    // Fecha o modal ao clicar em Cancelar
+    btnCancelar.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        itemParaExcluir = null;
+    });
+
+    // Executa a exclusão ao clicar em Confirmar
+    btnConfirmar.addEventListener('click', () => {
+        if (!itemParaExcluir) return;
+
+        const { id, type } = itemParaExcluir;
+
+        fetch(`/api/delete/${type}/${id}`, {
+            method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message); // Mostra a mensagem de sucesso ou erro
+            modal.classList.add('hidden');
+            if (data.success) {
+                // Se a exclusão deu certo, atualiza a busca para o item sumir
+                buscaInput.dispatchEvent(new Event('keyup'));
+            }
+        });
+    });
+</script>
+{% endblock %}

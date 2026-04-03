@@ -1,0 +1,14 @@
+/* Importa uma fonte mais moderna do Google Fonts (Opcional, mas recomendado) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Estilos de base para a página */
+body {
+    font-family: 'Inter', sans-serif; /* Aplica a nova fonte */
+    background-color: #f1f5f9; /* Um cinza mais suave (slate-100 do Tailwind) */
+    color: #334155; /* Um cinza-azulado escuro para o texto */
+}
+
+/* O restante do design (cards, grid, responsividade) 
+   será controlado pelo Tailwind CSS diretamente no HTML 
+   para maior praticidade.
+*/

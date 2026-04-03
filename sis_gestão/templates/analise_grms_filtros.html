@@ -1,0 +1,35 @@
+{% extends "cabecalho.html" %}
+
+{% block title %}Filtros - Análise de GRMs{% endblock %}
+
+{% block content %}
+<div class="flex items-center mb-8">
+    <a href="{{ url_for('analise_menu') }}" class="text-slate-600 font-semibold py-2 pr-4 mr-4 rounded-lg hover:bg-slate-200 transition-colors duration-300">
+        &larr; Voltar
+    </a>
+    <h2 class="text-2xl font-bold text-slate-700">Análise de Crescimento de GRMs</h2>
+</div>
+
+<div class="bg-white p-8 rounded-xl shadow-md max-w-xl mx-auto">
+    <h3 class="text-lg font-semibold text-slate-800 mb-4">Gerar Relatório</h3>
+    <p class="text-slate-500 mb-6">Selecione uma região específica ou gere o relatório para todas as regiões.</p>
+    
+    <form action="{{ url_for('analise_grms') }}" method="GET">
+        <div class="mb-4">
+            <label for="regiao" class="block text-sm font-medium text-slate-600 mb-1">Região</label>
+            <select id="regiao" name="regiao" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                <option value="todas">Todas as Regiões</option>
+                {% for item in regioes %}
+                    <option value="{{ item.regiao }}">{{ item.regiao }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mt-8 text-right">
+            <button type="submit" class="bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-emerald-700 transition-transform transform hover:scale-105">
+                Gerar Planilha
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

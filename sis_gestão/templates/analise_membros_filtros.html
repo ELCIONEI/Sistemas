@@ -1,0 +1,56 @@
+{% extends "cabecalho.html" %}
+{% block title %}Filtros - Análise de Membros{% endblock %}
+{% block content %}
+<div class="flex items-center mb-8">
+    <a href="{{ url_for('analise_menu') }}" class="text-slate-600 font-semibold py-2 pr-4 mr-4 rounded-lg hover:bg-slate-200 transition-colors duration-300">
+        &larr; Voltar
+    </a>
+    <h2 class="text-2xl font-bold text-slate-700">Análise de Membros</h2>
+</div>
+
+<div class="bg-white p-8 rounded-xl shadow-md max-w-2xl mx-auto">
+    <h3 class="text-lg font-semibold text-slate-800 mb-4">Gerar Relatório de Membros</h3>
+    <p class="text-slate-500 mb-6">Filtre por nome, período, região e GRM.</p>
+    
+    <form action="{{ url_for('analise_membros') }}" method="GET">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="nome_membro" class="block text-sm font-medium text-slate-600 mb-1">Buscar por Nome</label>
+                <input type="text" id="nome_membro" name="nome_membro" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Digite um nome...">
+            </div>
+            <div>
+                <label for="periodo" class="block text-sm font-medium text-slate-600 mb-1">Período de Cadastro</label>
+                <select id="periodo" name="periodo" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <option value="todos">Todos</option>
+                    <option value="bimestre">Último Bimestre</option>
+                    <option value="semestre">Último Semestre</option>
+                    <option value="ano">Último Ano</option>
+                </select>
+            </div>
+            <div>
+                <label for="regiao" class="block text-sm font-medium text-slate-600 mb-1">Região</label>
+                <select id="regiao" name="regiao" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <option value="todas">Todas as Regiões</option>
+                    {% for item in regioes %}
+                        <option value="{{ item.regiao }}">{{ item.regiao }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="grm_id" class="block text-sm font-medium text-slate-600 mb-1">GRM Específico</label>
+                <select id="grm_id" name="grm_id" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <option value="todos">Todos os GRMs</option>
+                    {% for grm in grms %}
+                        <option value="{{ grm.id }}">{{ grm.nome_grm }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="mt-8 text-right">
+            <button type="submit" class="bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-emerald-700">
+                Gerar Planilha
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

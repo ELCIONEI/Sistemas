@@ -1,0 +1,49 @@
+{% extends "cabecalho.html" %}
+
+{% block title %}Menu Principal{% endblock %}
+
+{% block content %}
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+
+        <a href="{{ url_for('cadastros') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/usuario1.jpg') }}" alt="Cadastrar" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Realizar Cadastro</h3>
+        </a>
+
+        <a href="{{ url_for('relatorios') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/relatorio.png') }}" alt="Relatórios" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Relatórios</h3>
+        </a>
+
+        <a href="{{ url_for('excluir_registro') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/excluir.png') }}" alt="Excluir" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Excluir Registro</h3>
+        </a>
+
+        <a href="{{ url_for('conceder_acesso') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/acesso.png') }}" alt="Acessos" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Conceder Acesso</h3>
+        </a>
+
+        <a href="{{ url_for('cad_grm') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/usuario.jpg') }}" alt="Cadastrar GRM" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Cadastrar GRM</h3>
+        </a>
+
+       <a href="{{ url_for('analise_menu') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/frequencia.png') }}" alt="Análise de Frequência" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Análise de Frequência</h3>
+        </a>
+
+        <a href="{{ url_for('historico_ofertas') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/ofertas.jpg') }}" alt="Histórico de Ofertas" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Histórico de Ofertas</h3>
+        </a>
+
+        <a href="{{ url_for('cad_evento') }}" class="group block rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <img src="{{ url_for('static', filename='imagens/grm.png') }}" alt="Eventos" class="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110">
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">Registrar Evento</h3>
+        </a>
+        
+    </div>
+{% endblock %}
