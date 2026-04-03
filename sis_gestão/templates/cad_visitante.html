@@ -1,0 +1,108 @@
+{% extends "cabecalho.html" %}
+
+{% block title %}Cadastrar Visitante{% endblock %}
+
+{% block content %}
+    <div class="flex items-center mb-8">
+        <a href="{{ url_for('cadastros') }}" class="text-slate-600 font-semibold py-2 pr-4 mr-4 rounded-lg hover:bg-slate-200 transition-colors duration-300">
+            &larr; Voltar
+        </a>
+        <h2 class="text-2xl font-bold text-slate-700">Formulário de Cadastro de Visitante</h2>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow-md max-w-2xl mx-auto">
+        <form action="{{ url_for('cad_visitante') }}" method="POST" class="space-y-6">
+            
+            <!-- Campos Pessoais -->
+            <div>
+                <label for="nome" class="block text-sm font-semibold text-slate-600 mb-1">Nome Completo</label>
+                <input type="text" id="nome" name="nome" required class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            </div>
+             <div>
+                <label for="endereco" class="block text-sm font-semibold text-slate-600 mb-1">Endereço</label>
+                <input type="text" id="endereco" name="endereco" class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-semibold text-slate-600 mb-1">E-mail</label>
+                <input type="email" id="email" name="email" class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="data_nascimento" class="block text-sm font-semibold text-slate-600 mb-1">Data de Nascimento</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="telefone" class="block text-sm font-semibold text-slate-600 mb-1">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- Campos Condicionais -->
+            <div class="space-y-4">
+                <div class="border-t pt-4">
+                    <label class="block text-sm font-semibold text-slate-600 mb-2">Membro de Outro Ministério?</label>
+                    <div class="flex items-center space-x-4">
+                        <label><input type="radio" name="membro_outro_ministerio" value="1" required class="mr-2"> Sim</label>
+                        <label><input type="radio" name="membro_outro_ministerio" value="0" class="mr-2"> Não</label>
+                    </div>
+                </div>
+
+                <!-- CAMPO CONDICIONAL: Nome do Ministério (começa escondido) -->
+                <div id="campo-nome-ministerio" class="hidden">
+                    <label for="nome_ministerio" class="block text-sm font-semibold text-slate-600 mb-1">Qual o nome do Ministério?</label>
+                    <input type="text" id="nome_ministerio" name="nome_ministerio" class="block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <div class="border-t pt-4">
+                    <label class="block text-sm font-semibold text-slate-600 mb-2">Vem de Outra Religião?</label>
+                    <div class="flex items-center space-x-4">
+                        <label><input type="radio" name="outra_religiao" value="1" required class="mr-2"> Sim</label>
+                        <label><input type="radio" name="outra_religiao" value="0" class="mr-2"> Não</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão de Envio -->
+            <div class="pt-4">
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-md hover:bg-blue-700 transition duration-300">
+                    Salvar Visitante
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+<!-- Bloco de Scripts para o Alerta e Campo Condicional -->
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Lógica para o campo condicional ---
+        const radiosMinisterio = document.querySelectorAll('input[name="membro_outro_ministerio"]');
+        const campoNomeMinisterio = document.getElementById('campo-nome-ministerio');
+
+        radiosMinisterio.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === '1') {
+                    campoNomeMinisterio.classList.remove('hidden'); // Mostra o campo
+                } else {
+                    campoNomeMinisterio.classList.add('hidden'); // Esconde o campo
+                }
+            });
+        });
+
+        // --- Lógica para o alerta de sucesso ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const isSuccess = urlParams.get('success');
+
+        if (isSuccess) {
+            const novoCadastro = confirm('Visitante cadastrado com sucesso! Deseja realizar um novo cadastro?');
+            
+            if (novoCadastro) {
+                window.history.replaceState({}, document.title, "{{ url_for('cad_visitante') }}");
+            } else {
+                window.location.href = "{{ url_for('cadastros') }}";
+            }
+        }
+    });
+</script>
+{% endblock %}

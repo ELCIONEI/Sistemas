@@ -1,0 +1,132 @@
+{% extends "cabecalho.html" %}
+
+{% block title %}Conceder Acesso{% endblock %}
+
+{% block content %}
+    <div class="flex items-center mb-8">
+        <a href="{{ url_for('dashboard') }}" class="text-slate-600 font-semibold py-2 pr-4 mr-4 rounded-lg hover:bg-slate-200 transition-colors duration-300">
+            &larr; Voltar
+        </a>
+        <h2 class="text-2xl font-bold text-slate-700">Conceder Acesso ao Sistema</h2>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="p-4 mb-4 text-sm rounded-lg 
+                    {% if category == 'success' %} bg-green-100 text-green-800 {% else %} bg-red-100 text-red-800 {% endif %}"
+                    role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="bg-white p-8 rounded-xl shadow-md">
+        <form action="{{ url_for('conceder_acesso') }}" method="POST">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="md:col-span-2">
+                    <label for="pessoa" class="block text-sm font-medium text-slate-600 mb-1">Pessoa</label>
+                    <select id="pessoa" name="pessoa" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <option value="" disabled selected>Selecione uma pessoa sem acesso</option>
+                        {% if pessoas %}
+                            <optgroup label="Supervisores">
+                                {% for p in pessoas if p.tipo == 'supervisor' %}
+                                <option value="supervisor:{{p.id}}:{{p.nome}}:{{p.email}}">{{ p.nome }}</option>
+                                {% endfor %}
+                            </optgroup>
+                            <optgroup label="Líderes">
+                                {% for p in pessoas if p.tipo == 'lider' %}
+                                <option value="lider:{{p.id}}:{{p.nome}}:{{p.email}}">{{ p.nome }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endif %}
+                    </select>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-slate-600 mb-2">Tipo de Login</label>
+                    <div class="flex items-center space-x-6">
+                        <label for="login_email" class="flex items-center cursor-pointer">
+                            <input type="radio" id="login_email" name="login_type" value="email" checked class="h-4 w-4 text-blue-600 border-gray-300">
+                            <span class="ml-2 text-slate-700">Usar E-mail</span>
+                        </label>
+                        <label for="login_generate" class="flex items-center cursor-pointer">
+                            <input type="radio" id="login_generate" name="login_type" value="generate" class="h-4 w-4 text-blue-600 border-gray-300">
+                            <span class="ml-2 text-slate-700">Gerar Usuário (ex: nome.sobrenome)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="username_field" class="hidden md:col-span-2">
+                    <label for="username_gerado" class="block text-sm font-medium text-slate-600 mb-1">Nome de Usuário Sugerido</label>
+                    <input type="text" id="username_gerado" name="username_gerado" readonly class="w-full p-3 border border-slate-300 rounded-lg bg-slate-100 cursor-not-allowed">
+                </div>
+
+                <div>
+                    <label for="perfil" class="block text-sm font-medium text-slate-600 mb-1">Atribuir Perfil de Acesso</label>
+                    <select id="perfil" name="perfil" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <option value="SUPERVISOR">Supervisor (Acesso Total)</option>
+                        <option value="LIDER">Líder</option>
+                        <option value="COLIDER">Co-líder</option>
+                        <option value="MEMBRO" selected>Membro (Acesso Básico)</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="senha" class="block text-sm font-medium text-slate-600 mb-1">Definir Senha Inicial</label>
+                    <input type="password" id="senha" name="senha" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+            </div>
+
+            <div class="mt-8 text-right">
+                <button type="submit" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">
+                    Criar Acesso
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Pega os elementos do HTML
+    const pessoaSelect = document.getElementById('pessoa');
+    const usernameFieldDiv = document.getElementById('username_field');
+    const usernameInput = document.getElementById('username_gerado');
+    const loginTypeRadios = document.querySelectorAll('input[name="login_type"]');
+
+    // Função para gerar o nome de usuário
+    function generateUsername(fullName) {
+        if (!fullName) return '';
+        // Pega o nome completo (ex: "Juan Matos")
+        const nameParts = fullName.split(':');
+        const name = nameParts[2]; // Pega apenas o nome da string "tipo:id:nome:email"
+        
+        // Converte para minúsculas, remove acentos, e troca espaços por pontos
+        return name.toLowerCase()
+                   .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove acentos
+                   .replace(/\s+/g, '.') // Troca espaços por pontos
+                   .replace(/[^a-z0-9.]/g, ''); // Remove caracteres não permitidos
+    }
+
+    // Ouve o evento de mudança no seletor de pessoas
+    pessoaSelect.addEventListener('change', function() {
+        const selectedPersonName = this.options[this.selectedIndex].text;
+        usernameInput.value = generateUsername(this.value);
+    });
+
+    // Ouve o evento de mudança nos botões de rádio
+    loginTypeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'generate') {
+                usernameFieldDiv.classList.remove('hidden');
+                usernameInput.value = generateUsername(pessoaSelect.value);
+            } else {
+                usernameFieldDiv.classList.add('hidden');
+            }
+        });
+    });
+</script>
+{% endblock %}

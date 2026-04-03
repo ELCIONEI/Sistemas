@@ -1,0 +1,65 @@
+{% extends "cabecalho.html" %}
+
+{% block title %}Registrar Convertido{% endblock %}
+
+{% block content %}
+    <div class="flex items-center mb-8">
+        <a href="{{ url_for('cadastros') }}" class="text-slate-600 font-semibold py-2 pr-4 mr-4 rounded-lg hover:bg-slate-200 transition-colors duration-300">
+            &larr; Voltar
+        </a>
+        <h2 class="text-2xl font-bold text-slate-700">Registrar Novo Convertido</h2>
+    </div>
+
+    {% if request.args.get('success') %}
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-lg" role="alert">
+            <p class="font-bold">Sucesso!</p>
+            <p>Novo convertido registrado no sistema.</p>
+        </div>
+    {% endif %}
+
+    <div class="bg-white p-8 rounded-xl shadow-md">
+        <form action="{{ url_for('cad_convertido') }}" method="POST">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="md:col-span-2">
+                    <label for="id_evento" class="block text-sm font-medium text-slate-600 mb-1">Evento Associado</label>
+                    <select id="id_evento" name="id_evento" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <option value="" disabled selected>Selecione o evento onde ocorreu a conversão</option>
+                        {% for evento in eventos %}
+                            <option value="{{ evento.id }}">
+                                {{ evento.data_evento.strftime('%d/%m/%Y') }} - {{ evento.nome_grm }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div>
+                    <label for="nome" class="block text-sm font-medium text-slate-600 mb-1">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div>
+                    <label for="telefone" class="block text-sm font-medium text-slate-600 mb-1">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="md:col-span-2">
+                    <label for="data_conversao" class="block text-sm font-medium text-slate-600 mb-1">Data da Conversão</o>
+                    <input type="date" id="data_conversao" name="data_conversao" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div class="md:col-span-2">
+                    <label for="observacoes" class="block text-sm font-medium text-slate-600 mb-1">Observações (Opcional)</label>
+                    <textarea id="observacoes" name="observacoes" rows="4" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+
+            </div>
+
+            <div class="mt-8 text-right">
+                <button type="submit" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">
+                    Registrar Convertido
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
