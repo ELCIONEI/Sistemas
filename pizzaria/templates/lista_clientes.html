@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes Fidelizados - Pizza Amiga</title>
+    <style>
+        body { font-family: sans-serif; background: #111; color: white; padding: 50px; line-height: 1.6; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #1a1a1a; }
+        th, td { border: 1px solid #444; padding: 12px; text-align: left; }
+        th { background: #ff4757; color: white; text-transform: uppercase; font-size: 0.9rem; }
+        tr:nth-child(even) { background: #222; }
+        tr:hover { background: #292929; }
+        
+        .alert-box { 
+            background: #ff4757; 
+            color: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin-bottom: 30px; 
+            border-left: 10px solid #b33939; 
+        }
+        .btn-whatsapp { 
+            color: white; 
+            font-weight: bold; 
+            text-decoration: underline; 
+        }
+        .back-link { color: #ff4757; text-decoration: none; font-weight: bold; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    {% if aniversariantes %}
+    <section class="alert-box">
+        <h2 style="margin-top: 0;">🎂 Aniversariantes de Hoje!</h2>
+        <p>Aproveite para fidelizar estes clientes com um brinde ou cupom:</p>
+        <ul>
+            {% for niver in aniversariantes %}
+            <li>
+                <strong>{{ niver['nome'] }}</strong> - 
+                {# Link com mensagem pré-definida #}
+                <a href="https://wa.me/55{{ niver['telefone'] }}?text=Olá%20{{ niver['nome'] }}!%20A%20Pizza%20Amiga%20te%20deseja%20um%20feliz%20aniversário!%20🎂%20Como%20presente,%20você%20ganhou%20um%20desconto%20especial%20para%20hoje!" 
+                   target="_blank" 
+                   class="btn-whatsapp">
+                    Enviar Parabéns no WhatsApp 📱
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+    <h1>Lista de Clientes (Plano Fidelidade)</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>WhatsApp</th>
+                <th>Aniversário</th>
+                <th>Fidelidade</th> <th>Ações</th>     </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente['id'] }}</td>
+                <td>{{ cliente['nome'] }}</td>
+                <td>{{ cliente['telefone'] }}</td>
+                <td>{{ cliente['data_aniversario'] }}</td>
+                <td>
+                    {# Formata a data de cadastro para o padrão brasileiro #}
+                    Cliente desde {{ cliente['data_cadastro'][:10].split('-')|reverse|join('/') }}
+                </td>
+                <td>
+                    <a href="/admin/excluir_cliente/{{ cliente['id'] }}" 
+                    onclick="return confirm('Tem certeza que deseja excluir este cliente?')" 
+                    style="color: #ff4757; text-decoration: none; font-weight: bold;">
+                    ❌ Excluir
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+    <a href="/" class="back-link">← Voltar para a Home</a>
+
+</body>
+</html>

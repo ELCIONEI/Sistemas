@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Acesso Administrativo</title>
+    <style>
+        body { background: #111; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        form { background: #1a1a1a; padding: 30px; border-radius: 8px; border: 1px solid #ff4757; }
+        input { display: block; width: 100%; margin: 10px 0; padding: 10px; background: #333; color: white; border: none; }
+        button { width: 100%; padding: 10px; background: #ff4757; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <form action="/admin/login" method="POST">
+        <h2>Área Restrita</h2>
+        <input type="text" name="usuario" placeholder="Usuário" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+</body>
+</html>

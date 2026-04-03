@@ -1,0 +1,670 @@
+/* GLOBAL */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --main-color: #da190f;
+  --bg: #13131a;
+  --bg-card: #0c0c14;
+  --white: #fff;
+  --border: 0.1rem solid rgba(255, 255, 255, 0.1);
+  
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: 0.2s linear;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 9rem;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 5rem;
+}
+
+body {
+  background: var(--bg);
+}
+
+section {
+  padding: 2rem 7%;
+}
+
+.heading {
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  padding-bottom: 3.5rem;
+  font-size: 4rem;
+}
+
+.heading span {
+  color: var(--main-color);
+  text-transform: uppercase;
+}
+
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.9rem 3rem;
+  font-size: 1.7rem;
+  color: #fff;
+  background: var(--main-color);
+  cursor: pointer;
+}
+
+.btn:hover {
+  letter-spacing: 0.2rem;
+}
+
+/* HEADER */
+.header {
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 7%;
+  border-bottom: var(--border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header .logo img {
+  height: 6.5rem;
+  border-radius: 100%;
+}
+
+.header .navbar a {
+  margin: 0 1rem;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.header .navbar a:hover {
+  color: var(--main-color);
+  border-bottom: 0.1rem solid var(--main-color);
+  padding-bottom: 0.5rem;
+}
+
+.header .icons {
+  display: flex;
+  align-items: center;
+}
+
+.header .icons div {
+  margin-left: 2rem;
+}
+
+.header .icons div ion-icon {
+  color: #fff;
+  cursor: pointer;
+  font-size: 2.5rem;
+}
+
+.header .icons div ion-icon:hover {
+  color: var(--main-color);
+}
+
+#menu-btn {
+  display: none;
+}
+
+/* HOME */
+.home {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background: url(../images/home.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-bottom: var(--border);
+}
+
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0, 0.5);
+  z-index: 1;
+}
+
+.home .content {
+  max-width: 60rem;
+  position: relative;
+  z-index: 2;
+}
+
+.home .content h3 {
+  font-size: 6rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.home .content p {
+  font-size: 2rem;
+  font-weight: lighter;
+  line-height: 1.8;
+  padding: 1rem 0;
+  color: #fff;
+}
+
+/* ABOUT */
+.about .row {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  flex-wrap: wrap;
+  border: var(--border);
+}
+
+.about .row .image {
+  flex: 1 1 45rem;
+}
+
+.about .row .image img {
+  width: 100%;
+}
+
+.about .row .content {
+  flex: 1 1 45rem;
+  padding: 2rem;
+}
+
+.about .row .content h3 {
+  font-size: 3rem;
+  color: #fff;
+}
+
+.about .row .content p {
+  font-size: 1.6rem;
+  color: #ccc;
+  padding: 1rem 0;
+  line-height: 1.8;
+}
+
+/* MENU & BOXES */
+.menu .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+}
+
+.menu .box-container .box {
+  padding: 3rem;
+  text-align: center;
+  border: var(--border);
+  background-color: var(--bg-card);
+}
+
+.menu .box-container .box img {
+  height: 18rem;
+  border-radius: 100%;
+  margin-bottom: 1rem;
+}
+
+.menu .box-container .box h3 {
+  color: #fff;
+  font-size: 2.2rem;
+  padding: 1rem 0;
+}
+
+/* --- ESTILO DAS DESCRIÇÕES  --- */
+.menu .box-container .box .description {
+  font-size: 1.4rem;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  line-height: 1.6;
+  text-transform: none; /* Permite letras minúsculas para melhor leitura */
+}
+
+.menu .box-container .box .details {
+  font-size: 1.2rem;
+  color: var(--main-color);
+  font-style: italic;
+  padding-bottom: 1rem;
+  text-transform: none;
+}
+
+.menu .box-container .box .price {
+  color: #fff;
+  font-size: 2.5rem;
+  padding: 0.5rem 0;
+}
+
+.menu .box-container .box .price span {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+  font-weight: lighter;
+}
+
+/* HOVER EFFECT */
+.menu .box-container .box:hover {
+  background: #fff;
+}
+
+.menu .box-container .box:hover > * {
+  color: #13131a;
+}
+
+.menu .box-container .box:hover .details {
+  color: var(--main-color);
+}
+
+/* REVIEW */
+.review .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+}
+
+.review .box-container .box {
+  border: var(--border);
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.review .box-container .box p {
+  font-size: 1.7rem;
+  line-height: 1.8;
+  color: #ccc;
+  padding: 2rem 0;
+}
+
+.user {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review .box-container .box h3 {
+  padding: 1rem 0;
+  color: #fff;
+  font-size: 2.2rem;
+}
+
+.review .box-container .box .stars i {
+  font-size: 1.7rem;
+  color: var(--main-color);
+}
+
+/* ANIVERSÁRIO */
+.aniversario {
+  text-align: center;
+}
+
+.aniversario h2 {
+  font-size: 2rem;
+  color: #ccc;
+  padding-bottom: 2rem;
+}
+
+/* FOOTER */
+.footer {
+  background: var(--bg);
+  text-align: center;
+  padding: 4rem 0;
+  border-top: var(--border);
+}
+
+.footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 7%;
+}
+
+.footer-col {
+  flex: 1 1 25rem;
+  margin: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li a {
+  color: #ccc;
+  font-size: 1.6rem;
+}
+
+.heading-footer {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.heading-footer span {
+  color: var(--main-color);
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  color: #ccc;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 991px) {
+  html { font-size: 55%; }
+  .header { padding: 1.5rem 2rem; }
+  section { padding: 2rem; }
+}
+
+@media (max-width: 768px) {
+  #menu-btn { display: inline-block; }
+
+  .header .navbar {
+    position: absolute;
+    top: 100%; right: -100%;
+    background: #fff;
+    width: 30rem;
+    height: calc(100vh - 9.5rem);
+  }
+
+  .header .navbar a {
+    color: var(--bg-card);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .home .content h3 { font-size: 4.5rem; }
+
+    /* --- ESTILO DAS DESCRIÇÕES  --- */
+  .box-container .box .description {
+    font-size: 1.6rem; /* Aumentei um pouco para legibilidade */
+    color: #ccc;
+    padding: 1rem 2rem;
+    line-height: 1.6;
+    text-transform: none;
+  }
+
+  .box-container .box .details {
+    font-size: 1.4rem;
+    color: var(--main-color);
+    font-style: italic;
+    padding-bottom: 1.5rem;
+    text-transform: none;
+  }
+
+  /* Garante que o container de aniversário também use Grid */
+  .aniversario .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  /* Estilo para o box da seção aniversário especificamente */
+  .aniversario .box-container .box {
+    padding: 3rem;
+    text-align: center;
+    border: var(--border);
+    background-color: var(--bg-card);
+    max-width: 40rem; /* Evita que o card fique largo demais se houver apenas um */
+    margin: 0 auto;
+  }
+  :root {
+    --red: #e74c3c;
+    --black: #13131a;
+    --white: #fff;
+    --light-color: #666;
+    --border: .1rem solid rgba(255,255,255,.1);
+}
+
+.cart-container {
+    background: var(--black);
+    min-height: 100vh;
+    padding: 2rem 9%;
+    color: var(--white);
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px; /* Espaçamento entre as linhas */
+    margin-top: 2rem;
+}
+
+.cart-table th {
+    font-size: 1.7rem;
+    color:  #e2eb62;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: var(--border);
+}
+
+.cart-table td {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    background: #8787f0; /* Fundo levemente diferente para cada linha */
+}
+
+/* Arredondar cantos das linhas da tabela */
+.cart-table tr td:first-child { border-radius: .5rem 0 0 .5rem; }
+.cart-table tr td:last-child { border-radius: 0 .5rem .5rem 0; }
+
+.total {
+    text-align: right;
+    font-size: 2.5rem;
+    padding: 2rem 0;
+    border-top: var(--border);
+    margin-top: 1rem;
+}
+
+.total span {
+    color: var(--red);
+}
+
+/* Estilo para os botões alinhados */
+.cart-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+}
+/* --- ESTILOS EXCLUSIVOS DA PÁGINA DE CARRINHO --- */
+.cart-container {
+    background: var(--bg);
+    min-height: 100vh;
+    padding: 15rem 9% 5rem; /* Ajustei o topo para não ficar embaixo do header fixo */
+    color: #fff;
+    text-align: center;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1.5rem;
+    margin-top: 3rem;
+}
+
+.cart-table th {
+    font-size: 2rem;
+    color: var(--main-color);
+    text-align: left;
+    padding: 1.5rem;
+    border-bottom: var(--border);
+}
+
+.cart-table td {
+    font-size: 1.8rem;
+    padding: 2rem;
+    background: var(--bg-card); /* Mantendo a identidade visual dos cards */
+    border: var(--border);
+    text-align: left;
+}
+
+/* Arredondar as bordas das linhas da tabela */
+.cart-table tr td:first-child { border-radius: .5rem 0 0 .5rem; border-right: none; }
+.cart-table tr td:last-child { border-radius: 0 .5rem .5rem 0; border-left: none; text-align: right; }
+
+.total {
+    text-align: right;
+    font-size: 3rem;
+    padding: 3rem 0;
+    color: #fff;
+}
+
+.total span {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.cart-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+/* --- PÁGINA DE CARRINHO (LIMPEZA) --- */
+.cart-table th {
+    font-size: 1.8rem;
+    color: var(--main-color); /* Removido o amarelo inconsistente */
+    text-align: left;
+    padding: 1.5rem;
+    border-bottom: var(--border);
+}
+
+.cart-table td {
+    font-size: 1.6rem;
+    padding: 2rem;
+    color: var(--white);
+    background: var(--bg-card); /* Removido o azul inconsistente */
+    border-bottom: 0.1rem solid rgba(255,255,255,0.05);
+}
+
+/* Ajuste para mobile no carrinho */
+@media (max-width: 768px) {
+    .cart-table thead { display: none; } /* Esconde cabeçalho em telas pequenas */
+    .cart-table td {
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .cart-table td::before {
+        content: attr(data-label); /* Técnica para TCC: Tabela Responsiva */
+        position: absolute;
+        left: 1.5rem;
+        font-weight: bold;
+        color: var(--main-color);
+    }
+}
+
+/* Ajuste específico para os botões do carrinho que não são vermelhos */
+.btn-secondary {
+    background: #333 !important;
+}
+
+.btn-secondary:hover {
+    background: #444 !important;
+}
+/* --- Configurações do carrinho --- */
+.cart-sidebar {
+    position: fixed;
+    top: 0; 
+    right: 0; 
+    width: 35rem;
+    height: 100vh;
+    background: var(--bg-card);
+    border-left: var(--border);
+    z-index: 1001;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    /*  */
+    transform: translateX(100%); 
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-sidebar.active {
+    transform: translateX(0); /* Desliza suavemente */
+}
+/* Controle de quantidade na tabela */
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-qty {
+    background: var(--main-color);
+    color: white;
+    padding: 0.2rem 0.8rem;
+    cursor: pointer;
+    border-radius: 0.3rem;
+}
+
+.btn-remove {
+    color: #ff4d4d;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Melhoria na Sidebar para parecer profissional */
+.side-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 0.1rem solid rgba(255,255,255,0.1);
+}
+.modal-container {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    align-items: center; justify-content: center;
+}
+ /*Configuração da tela de cadastro */
+.modal-content {
+    background: #13131a;
+    padding: 3rem;
+    border: 1px solid var(--red);
+    width: 90%; max-width: 400px;
+    text-align: center;
+}
+
+.modal-content .box {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: #fff;
+    background: #010103;
+    border: 1px solid var(--red);
+}

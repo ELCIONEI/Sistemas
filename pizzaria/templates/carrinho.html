@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Carrinho | Pizza Amiga</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <section class="cart-container">
+        <h1 class="heading">Seu <span>Carrinho</span></h1>
+        
+        {% if items %}
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td data-label="Produto">{{ item.nome }}</td>
+                        <td data-label="Quantidade">
+                            <div class="qty-control">
+                                <button class="btn-qty" data-action="decrease" data-nome="{{ item.nome }}">-</button>
+                                <span class="item-qty">{{ item.quantidade }}</span> 
+                                <butto class="btn-qty" data-action="increase" data-nome="{{ item.nome }}">+</butto
+                            </div>
+                        </td>
+                        <td data-label="Preço">R$ {{ "%.2f"|format(item.preco_total) }}</td>
+                        <td data-label="Ações">
+                            <a href="#" class="btn-remove" data-nome="{{ item.nome }}">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="total">Total: <span>R$ {{ "%.2f"|format(total) }}</span></div>
+
+            <div class="cart-buttons">
+                <a href="#" id="btn-finalizar" class="btn">Finalizar Pedido</a>
+                <a href="{{ url_for('clear_cart') }}" class="btn btn-secondary">Limpar Carrinho</a>
+                <a href="{{ url_for('index') }}" class="btn">Voltar ao Menu</a>
+            </div>
+
+        {% else %}
+            <div style="text-align:center; padding: 5rem 0;">
+                <p style="font-size: 2rem;">Seu carrinho está vazio!</p>
+                <a href="{{ url_for('index') }}" class="btn">Ir para o Menu</a>
+            </div>
+        {% endif %}
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{ url_for('static', filename='js/carrinho.js') }}"></script>
+</body>
+</html>

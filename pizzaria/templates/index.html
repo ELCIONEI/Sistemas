@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Amiga | Sabores Inesquecíveis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <header class="header">
+    <a href="#" class="logo">      
+      <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Fachada da Pizza Amiga">
+    </a>
+
+    <nav class="navbar">
+      <a href="#home">home</a>
+      <a href="#about">sobre</a>
+      <a href="#menu">menu</a>
+      <a href="#promocao">Promoções</a>
+      <a href="#pizza">Pizzas</a>
+      <a href="#massas">Macarrões</a>
+      <a href="#crepes">Crepes</a>
+      <a href="#bebidas">Bebidas</a>
+      <a href="#review">Avaliações</a>
+      <a href="#aniversario">Aniversariante</a>
+      {% if total_aniversariantes_mes > 0 %}
+        <a href="{{ url_for('listar_clientes') }}" style="display: inline-block;">
+          <span style="background: #ff4757; color: white; border-radius: 50%; padding: 2px 7px; font-size: 1.2rem; cursor: pointer;">
+            {{ total_aniversariantes_mes }}
+          </span>
+        </a>
+      {% endif %}
+    </nav>
+
+    <div class="icons">
+      <div><ion-icon name="person"></ion-icon></div>
+      <div><ion-icon name="search"></ion-icon></div>
+      <a href="{{ url_for('view_cart') }}" style="position: relative; color: white; font-size: 3.5rem; display: flex; align-items: center;">
+        <ion-icon name="cart"></ion-icon> 
+        
+        <span id="cart-count" style="
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background: var(--red, red); 
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 15px;
+            display: none; /* O JS vai mudar para 'flex' quando houver itens */
+            align-items: center;
+            justify-content: center;
+            min-width: 18px;
+            height: 18px;
+        ">0</span>
+      </a>
+      <div id="menu-btn"><ion-icon name="menu"></ion-icon></div>
+    </div>
+    
+  </header>
+
+  <section class="home" id="home">
+    <div class="content">
+      <h3>Bem vindo à Pizza Amiga!</h3>
+      <p>Descubra o sabor autêntico das nossas pizzas artesanais, preparadas com ingredientes frescos e de alta qualidade.</p>
+      <a href="#menu" class="btn">Faça seu pedido!</a>
+    </div>
+  </section>
+  <!--Apresentação da pagina-->>
+  <section class="about" id="about">
+    <h1 class="heading"><span>Sobre</span> nós</h1>
+    <div class="row">
+      <div class="image">
+        <img src="static\images\sobre.jpg" alt="Fachada da Pizza Amiga">
+      </div>
+      <div class="content">
+        <h3>O que torna a Pizza Amiga única?</h3>
+        <p>Na Pizza Amiga, criamos experiências memoráveis combinando tradição e inovação em cada fatia.</p>
+        <p>Nossas massas artesanais são leves e crocantes, acompanhadas por molhos de tomates frescos e especiarias únicas.</p>
+        <a href="#" class="btn">Saiba mais</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="promocao">
+    <h1 class="heading">Promoção da Semana <span>De seganda a Quinta</span></h1>
+    <div class="box-container">
+      <div class="box">
+        <img src="static\images\crepes\1.png" alt="calabreza">
+        <h3>Crepe Puro Frango</h3>
+        
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>        
+
+        <div class="price"> Por R$25.99 <span> De 32.99</span></div>
+
+        <a href="#" class="btn" data-nome="Crepe Puro Frango" data-preco="25.99">Adicionar</a>
+
+      </div>
+      <div class="box">
+        <img src="static\images\bebidas\1.png" alt="fanta">
+        <h3>Fanta Laranja 250ML.</h3>
+        <p class="description">Temos uma variada linha de sabores em refrigerantes.</p>
+        <p class="details">Nossos refrigerantes variam de latas de 250ML a 2L.</p>
+        <div class="price">Por R$ 5.99 <span>De 6.99</span></div>
+        <a href="#" class="btn" data-nome="Fanta Laranja 250ML" data-preco="5.99">Adicionar</a>
+
+      </div>            
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <h1 class="heading">Nosso <span>menu</span></h1>
+    <div class="box-container">
+      <div class="box">
+        <img src="static\images\crepes\1.png" alt="Explosão de Frango">
+        <h3>Explosão de Frango</h3>
+        <div class="price"> R$55.99 <span>60.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Explosão de Frango" data-preco="55.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\crepes\2.png" alt="Achocolatado">
+        <h3>Crepe Achocolatado</h3>
+        <div class="price"> R$45.99 <span>60.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Crepe Achocolotado" data-preco="45.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\pizzas\pizza_item_1.jpg" alt="Mediterrânea">
+        <h3>Mediterrânea Delícia</h3>
+        <div class="price"> R$75.99 <span>80.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Mediterranea Delicia" data-preco="75.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\pizzas\pizza_item_2.jpg" alt="Pomodoro">
+        <h3>Pomodoro do Campo</h3>
+        <div class="price"> R$45.99 <span>50.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Pomodoro do Campo" data-preco="45.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\pizzas\pizza_item_5.jpg" alt="Lusitana">
+        <h3>Lusitana Colorida</h3>
+        <div class="price"> R$55.99 <span>60.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Lusitana Colorida" data-preco="55.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\macarrao\1.png" alt="Molho Italiano">
+        <h3>Macarrao Molho Italiano</h3>
+        <div class="price"> R$85.99 <span>100.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Macarrao Molho Italiano" data-preco="85.99">Adicionar</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="pizza">
+    <h1 class="heading">Nossas <span>Pizzas</span></h1>
+    <div class="box-container">
+      <div class="box">
+        <img src="static\images\pizzas\pizza_item_1.jpg" alt="calabreza">
+        <h3>Explosão de calabreza</h3>
+        <div class="price"> R$55.99 <span>60.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Explosão de Calabresa" data-preco="55.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\pizzas\pizza_item_2.jpg" alt="vegana">
+        <h3>Pimenta vegana</h3>
+        <div class="price"> R$45.99 <span>60.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Pimenta Vegana" data-preco="45.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\pizzas\pizza_item_3.jpg" alt="Mediterrânea">
+        <h3>Mediterrânea Delícia</h3>
+        <div class="price"> R$75.99 <span>80.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Mediterranea Delicia" data-preco="75.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\pizzas\pizza_item_4.jpg" alt="Pomodoro">
+        <h3>Pomodoro do Campo</h3>
+        <div class="price"> R$45.99 <span>50.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Pomodoro do Campo" data-preco="45.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\pizzas\pizza_item_5.jpg" alt="Lusitana">
+        <h3>Lusitana Colorida</h3>
+        <div class="price"> R$55.99 <span>60.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Lusitana Colorida" data-preco="55.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\pizzas\pizza_item_6.jpg" alt="Molho Italiano">
+        <h3>Molho Italiano</h3>
+        <div class="price"> R$85.99 <span>100.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Molho Italiano" data-preco="85.99">Adicionar</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="crepes">
+    <h1 class="heading">Nossos <span>Deliciosos Crepes</span></h1>
+    <div class="box-container">
+      <div class="box">
+        <img src="static\images\crepes\1.png" alt="calabreza">
+        <h3>Crepe de Frango</h3>
+        <div class="price"> R$25.99 <span>30.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Crepe de Frango" data-preco="25.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\crepes\2.png" alt="vegana">
+        <h3>Crepe de chocolate</h3>
+        <div class="price"> R$25.99 <span>30.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Crepe de chocolate" data-preco="25.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\crepes\3.png" alt="Mediterrânea">
+        <h3>Crepe doce com creme de amendoin</h3>
+        <div class="price"> R$25.99 <span>30.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Crepe doce com creme de amendoin" data-preco="25.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\crepes\4.png" alt="Pomodoro">
+        <h3>Crepe 4 Queijos</h3>
+        <div class="price"> R$25.99 <span>50.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Crepe 4 Queijos" data-preco="25.99">Adicionar</a>
+      </div>      
+    </div>
+  </section>
+
+  <section class="menu" id="bebidas">
+    <h1 class="heading">Nossos Deliciosos<span> Sucos e Cremes</span></h1>
+    <div class="box-container">
+      <div class="box">
+        <img src="static\images\bebidas\1.png" alt="fanta">
+        <h3>Fanta Laranja</h3>
+        <div class="price"> R$5.99 <span>7.99</span></div>
+        <p class="description">Fanta laranja latinha 250ml.</p>
+        <p class="details">.</p>
+        <a href="#" class="btn" data-nome="Fanta Laranja" data-preco="5.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\bebidas\2.png" alt="coca cola">
+        <h3>Coca Cola 2L</h3>
+        <div class="price"> R$9.99 <span>11.99</span></div>
+        <p class="description">Coca cola.</p>
+        <p class="details">Temos tambem  Coca Cola '0' 2L.</p>
+        <a href="#" class="btn" data-nome="Coca Cola 2L" data-preco="5.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\bebidas\3.png" alt="maracuja">
+        <h3>Suco de maracuja 200ML</h3>
+        <div class="price"> R$5.99 <span>8.99</span></div>
+        <p class="description">Maracuja e não polpas.</p>
+        <p class="details">Açucar, adocante ou sucarose.</p>
+        <a href="#" class="btn" data-nome="Suco de Maracuja 200ML" data-preco="5.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\bebidas\4.png" alt="morango">
+        <h3>Suco de Morango</h3>
+        <div class="price"> R$5.99 <span>8.99</span></div>
+        <p class="description">Morangos frescos e não polpas.</p>
+        <p class="details">Açucar, adocante ou sucarose.</p>
+        <a href="#" class="btn" data-nome="Suco de Morango" data-preco="5.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\bebidas\5.png" alt="creme">
+        <h3>Creme de Morango</h3>
+        <div class="price"> R$45.99 <span>50.99</span></div>
+        <p class="description">morango, leite desnatado.</p>
+        <p class="details">Com um delicioso creme de leite.</p>
+        <a href="#" class="btn" data-nome="Creme de Morango" data-preco="5.99">Adicionar</a>
+      </div>      
+    </div>
+  </section>
+
+  <section class="menu" id="massas">
+    <h1 class="heading">A Verdadeira Massa Italiana<span> Macarrão Caseiro</span></h1>
+    <div class="box-container">
+      <div class="box">
+        <img src="static\images\macarrao\1.png" alt="massa">
+        <h3>Massa Italiana</h3>
+        <div class="price"> R$55.99 <span>60.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Massa Italiana" data-preco="55.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\macarrao\2.png" alt="branco">
+        <h3>Massa ao molho branco</h3>
+        <div class="price"> R$45.99 <span>60.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Massa ao Molho Branco" data-preco="45.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\macarrao\3.png" alt="queijo">
+        <h3>Massa 4 Queijos</h3>
+        <div class="price"> R$55.99 <span>60.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Massa 4 queijos" data-preco="55.99">Adicionar</a>
+      </div>
+      <div class="box">
+        <img src="static\images\macarrao\4.png" alt="molho">
+        <h3>Molho ingles</h3>
+        <div class="price"> R$45.99 <span>50.99</span></div>
+        <p class="description">Frango desfiado com catupiry original, milho selecionado e tempero da casa.</p>
+        <p class="details">Massa leve preparada com ovos caipiras e farinha de trigo especial.</p>
+        <a href="#" class="btn" data-nome="Molho" data-preco="55.99">Adicionar</a>
+      </div>      
+    </div>
+  </section>
+
+    <section class="aniversario" id="aniversario">
+        <h1 class="heading">Nosso <span>Plano Fidelidade</span></h1>
+        <h2>Com o nosso plano fidelidade, o aniversariante tem um combo de benefícios ao comemorar o aniversario em nossa casa.</h2>
+    
+        <div class="box-container">
+            <div class="box">
+                <img src="static\images\aniversario.png" alt="aniversario">
+            <div class="price"> <span> </span></div>
+            <a href="#modal-cadastro" class="btn" id="open-modal">Realizar Cadastro</a>
+
+              <div id="modal-cadastro" class="modal-container">
+                  <div class="modal-content">
+                      <span class="close-modal">&times;</span>
+                      <h2 class="heading">Plano <span>Fidelidade</span></h2>
+                      <form action="/cadastrar_fidelidade" method="POST">
+                          <input type="text" name="nome" placeholder="Seu Nome Completo" required class="box">
+                          <input type="text" name="telefone" placeholder="Seu WhatsApp (com DDD)" required class="box">
+                          <label for="aniversario" style="color: white; font-size: 1.5rem;">Data de Nascimento:</label>
+                          <input type="date" name="aniversario" required class="box">
+                          <button type="submit" class="btn">Confirmar Cadastro</button>
+                      </form>
+                  </div>
+              </div>
+
+
+            </div>            
+        </div>
+    </section> 
+
+  <!-- REVIEW / AVALIAÇÕES -->
+    <section class="review" id="review">
+      <h1 class="heading">O que nossos <span>clientes dizem</span></h1>
+
+      <div class="box-container">
+          {% for avaliacao in avaliacoes %}
+          <div class="box">
+              <p>{{ avaliacao['comentario'] }}</p>
+              <img class="user" src="static/images/user_padrao.png" alt="Avatar">
+              <h3>{{ avaliacao['nome'] }}</h3>
+              <div class="stars">
+                  {% for i in range(avaliacao['estrelas']) %}
+                      <i><ion-icon name="star"></ion-icon></i>
+                  {% endfor %}
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+
+      <div style="max-width: 600px; margin: 40px auto; background: #1a1a1a; padding: 20px; border-radius: 8px;">
+          <h2 style="color: white; text-align: center;">Deixe sua Avaliação</h2>
+          <form action="/enviar_avaliacao" method="POST" style="display: flex; flex-direction: column; gap: 10px;">
+              <input type="text" name="nome" placeholder="Seu Nome" required class="box" style="padding: 10px; background: #333; color: white; border: none;">
+              <textarea name="comentario" placeholder="Conte sua experiência..." required class="box" style="padding: 10px; background: #333; color: white; border: none; height: 80px;"></textarea>
+              <select name="estrelas" required style="padding: 10px; background: #333; color: white; border: none;">
+                  <option value="5">⭐⭐⭐⭐⭐ (Excelente)</option>
+                  <option value="4">⭐⭐⭐⭐ (Muito Bom)</option>
+                  <option value="3">⭐⭐⭐ (Bom)</option>
+                  <option value="2">⭐⭐ (Regular)</option>
+                  <option value="1">⭐ (Pode Melhorar)</option>
+              </select>
+              <button type="submit" class="btn">Enviar Avaliação</button>
+          </form>
+      </div>
+    </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-col">
+        <h4 class="heading-footer">Administração</h4>
+        <ul>
+          <li><a href="{{ url_for('listar_clientes') }}">Painel do Gerente 🔐</a></li>
+          <li><a href="{{ url_for('admin_logout') }}">Inicio da Pagina</a></li>
+          <li><a href="#about">Sobre nós</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="heading-footer">Siga<span>-nos</span></h4>
+        <div class="social-links">
+          <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+          <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Pizza Amiga. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="{{ url_for('static', filename='js/carrinho.js') }}"></script>
+</body>
+</html>
