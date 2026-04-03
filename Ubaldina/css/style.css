@@ -1,0 +1,292 @@
+/* css/style.css - VERSÃO CORRIGIDA E LIMPA */
+
+:root {
+    --color-dark: #141414;
+    --color-orange: #f36f21;
+    --color-light: #f5f5f5;
+    --color-gray: #333333;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+a { color: var(--color-light); text-decoration: none; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+
+/* HEADER E NAVEGAÇÃO - CÓDIGO ATUALIZADO */
+.main-header {
+    background-color: #000;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between; /* Empurra o logo para a esquerda, o placeholder para a direita e a nav fica no meio */
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+}
+
+/* Define uma largura para o logo e para o espaço vazio à direita */
+.logo, .header-placeholder {
+    width: 150px; /* Ajuste este valor se o logo for maior ou menor */
+}
+
+/* Garante que o placeholder não mostre nada, apenas ocupe espaço */
+.header-placeholder {
+    visibility: hidden;
+}
+
+/* Centraliza os links de navegação */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Aumenta o espaço entre os links */
+}
+
+.main-nav a:hover {
+    color: var(--color-orange);
+}
+
+.whatsapp-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* BANNER HERO - CORRIGIDO */
+.hero {
+    height: 90vh;
+    /* CORREÇÃO: A imagem de fundo principal (não a marca d'água) deve ser a da obra, não o logo */
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, transparent 50%), url('../images/peca11.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 0 10% 5%;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    position: relative; /* Essencial para a marca d'água */
+}
+
+/* MARCA D'ÁGUA APENAS NA SEÇÃO HERO */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* CORREÇÃO: O caminho precisa do '../' para sair da pasta 'css' e encontrar a 'images' */
+    background-image: url('../imagens/logoB.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 600px;
+    opacity: 0.2; /* A opacidade deve ser baixa para ser uma marca d'água */
+    z-index: 0;
+}
+
+/* Garante que o texto fique na frente da marca d'água */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+}
+
+.hero-title { font-size: 3.5em; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); }
+.hero-description { font-size: 1.2em; line-height: 1.5; margin-bottom: 25px; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); }
+.hero-button { background-color: var(--color-orange); padding: 12px 25px; font-weight: bold; border-radius: 5px; transition: background-color 0.3s ease; }
+.hero-button:hover { background-color: #d15c16; }
+
+
+/* SEÇÃO DA ARTISTA E CARROSSEL DE VÍDEOS */
+.artist-section { padding: 80px 0; background-color: #000; }
+.artist-container { display: flex; align-items: center; justify-content: center; gap: 50px; flex-wrap: wrap; }
+.artist-text { flex: 1; min-width: 300px; max-width: 450px; }
+.artist-text h2 { font-size: 2.5em; margin-bottom: 20px; color: var(--color-orange); }
+.artist-links { display: flex; gap: 15px; margin-top: 20px; }
+.artist-links a { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: all 0.3s ease; }
+.instagram-btn { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #bc1888); }
+.facebook-btn { background-color: #1877F2; }
+.artist-links a:hover { filter: brightness(1.15); transform: translateY(-3px); }
+
+.video-carousel-container {
+    flex: 1.5;
+    min-width: 200px;
+    max-width: 300px;
+    position: relative;
+    overflow: hidden;
+}
+.video-carousel-container h3 { text-align: center; margin-bottom: 15px; font-size: 1.5em; }
+.video-carousel { display: flex; transition: transform 0.5s ease-in-out; }
+.video-slide { min-width: 100%; }
+.video-slide video { width: 100%; border-radius: 8px; }
+.prev-btn, .next-btn {
+    cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); padding: 16px; color: white;
+    font-weight: bold; font-size: 20px; background-color: rgba(0,0,0,0.5); border: none; user-select: none;
+}
+.prev-btn { left: 0; border-radius: 0 3px 3px 0; }
+.next-btn { right: 0; border-radius: 3px 0 0 3px; }
+
+
+/* GALERIA COM CARDS DETALHADOS (versão correta, sem duplicatas) */
+.gallery-section { padding: 100px 0 50px 0; }
+.gallery-section h2 { font-size: 2.5em; text-align: center; margin-bottom: 40px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+
+.art-piece {
+    background-color: var(--color-gray); border-radius: 8px; overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; flex-direction: column;
+}
+.art-piece:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); }
+.art-piece img { width: 100%; height: 250px; object-fit: cover; }
+
+.art-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.art-info h3 { font-size: 1.4em; margin-bottom: 15px; color: var(--color-orange); }
+.art-info ul { list-style: none; margin-bottom: 20px; }
+.art-info ul li { margin-bottom: 8px; font-size: 0.9em; }
+
+.buy-button {
+    background-color: var(--color-orange); color: var(--color-light); font-weight: bold; font-size: 1em;
+    border: none; padding: 12px 15px; border-radius: 5px; cursor: pointer; text-align: center;
+    margin-top: auto; transition: background-color 0.3s ease;
+}
+.buy-button:hover { background-color: #d15c16; }
+
+
+/* RODAPÉ */
+.main-footer { padding: 30px 0; background-color: #000; border-top: 1px solid var(--color-gray); text-align: center; margin-top: 50px; }
+
+
+/* AJUSTES RESPONSIVOS */
+@media (max-width: 1200px) {
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    .main-header .container { flex-direction: column; gap: 15px; }
+}
+@media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: repeat(1, 1fr); }
+}
+/* ESTILOS PARA A SEÇÃO DE ITENS EM DESTAQUE */
+
+#featured-items {
+    padding: 60px 0;
+    border-top: 1px solid var(--color-gray);
+    border-bottom: 1px solid var(--color-gray);
+}
+
+#featured-items h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-orange);
+}
+
+.featured-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap; /* Garante que funcione bem em telas menores */
+}
+
+/* Deixa os cards em destaque um pouco maiores */
+.featured-grid .art-piece {
+    max-width: 400px; /* Define uma largura máxima */
+    flex-grow: 1;
+}
+
+/* Adiciona a faixa "Promoção" nos cards de destaque */
+.art-piece.featured {
+    position: relative;
+}
+
+.art-piece.featured::before {
+    content: 'Promoção';
+    position: absolute;
+    top: 15px;
+    left: -10px;
+    background-color: var(--color-orange);
+    color: white;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-size: 0.9em;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+/* ESTILOS PARA O VISUALIZADOR DE IMAGEM (MODAL/LIGHTBOX) */
+
+/* Deixa o cursor com uma 'lupa' ou 'mãozinha' nas imagens de destaque */
+.clickable-image {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.clickable-image:hover {
+    opacity: 0.8;
+}
+
+/* O fundo escuro (overlay) */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Fica por cima de todo o conteúdo */
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+}
+
+/* A imagem ampliada */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 85vh;
+    /* Animação de zoom */
+    animation-name: zoom;
+    animation-duration: 0.4s;
+}
+
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* O botão de fechar (X) */
+.close-modal-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+}

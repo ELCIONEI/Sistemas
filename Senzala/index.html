@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semeando Arte com a Senzala</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/meu_style.css">
+</head>
+<body>
+
+    <header class="text-center p-4">
+        <h1>Projeto Social</h1>
+        <h2>SEMEANDO ARTE com a SENZALA</h2>
+        <h3>CEI DA ESTRUTURAL - Jardim de Infancia</h3>
+    </header>    
+    <section id="mural-interativo" class="container mt-5">
+        <h2 class="text-center mb-4">Mural de Eventos</h2>
+        <div class="mural-container">
+
+            <div class="mural-thumbnails-left"> 
+                <div class="thumbnail-item">
+                    <img src="fotos/banner_mes.jpg" class="thumbnail-img active-thumbnail" alt="Banner Roda do Mês" data-target-id="evento-1">
+                    <div class="info-evento">
+                        <p><strong>Data:</strong> 28/09/2025</p>
+                        <p><strong>Local:</strong> Ginásio Principal</p>
+                        <p><strong>Confraternização:</strong> Participe do encontro de camaradas, só uma vez por mês.</p>
+                    </div>
+                </div>
+                <div class="thumbnail-item">
+                    <img src="fotos/batizado.jpg" class="thumbnail-img" alt="Evento para troca de cordas" data-target-id="evento-2">
+                    <div class="info-evento">
+                        <p><strong>Data:</strong> DEZEMBRO de 2025</p>
+                        <p><strong>Local:</strong> A Definir</p>
+                        <p><strong>Batizado:</strong> Para você aluno, que se dedicou, se esforçou, esta é a hora da recompensa.</p>
+                    </div>
+                </div>
+
+                <div class="thumbnail-item">
+                    <img src="fotos/trajetoria.jpg" class="thumbnail-img" alt="O caminho do aluno" data-target-id="evento-5">
+                    <div class="info-evento">
+                        <p><strong>O Caminho do Aluno:</strong> Se acha que o caminho é longo, então dê o primeiro passo, 
+                            o mestre é mestre, porque nunca desisitiu.</p>
+                    </div>
+                </div>
+
+            </div>            
+
+            <div class="mural-principal">
+                
+                <div id="evento-1" class="mural-content active">
+                    <img src="fotos/banner_mes.jpg" alt="Banner Roda do Mês">
+                </div>
+                <div id="evento-2" class="mural-content">
+                    <img src="fotos/batizado.jpg" alt="Evento para troca de cordas">
+                </div>
+                <div id="evento-3" class="mural-content">
+                    <img src="fotos/logo_aulas.jpg" alt="Banner Aulas de Capoeira">
+                </div>
+                <div id="evento-4" class="mural-content">
+                    <img src="fotos/Aulas_ritimos.jpg" alt="Banner Oficina de Ritmos">
+                </div>
+                <div id="evento-5" class="mural-content active">
+                    <img src="fotos/trajetoria.jpg" alt="o caminho do aluno">
+                </div>
+                <div id="evento-6" class="mural-content active">
+                    <img src="fotos/aniversariante_do_mes.png" alt="Aniversariante">
+                </div>
+            </div>
+
+            <div class="mural-thumbnails-right">
+                <div class="thumbnail-item">
+                    <img src="fotos/logo_aulas.jpg" class="thumbnail-img" alt="Aulas de capoeira" data-target-id="evento-3">
+                    <div class="info-evento">
+                        <p><strong>Local:</strong>CEI DA ESTRUTURAL - Jardim de Infancia</p>
+                        <p><strong>DIAS:</strong> Segunda e Quartas</p>
+                        <p><strong>HORARIO:</strong> Partir DAS 19:00h</p>
+                    </div>
+                </div>
+               
+                <div class="thumbnail-item">
+                     <img src="fotos/Aulas_ritimos.jpg" class="thumbnail-img" alt="Oficina de Ritmos" data-target-id="evento-4">
+                    <div class="info-evento">
+                        <p><strong>Local:</strong>A Definir</p>
+                        <p><strong>DATA:</strong> Dia 25 de Outubro de 2025</p>
+                        <p><strong>OFICINA:</strong> De Ritimos e Batuques, aprenda a tocar o seu instrumento preferido</p>
+                    </div>
+                </div>
+
+                <div class="thumbnail-item">
+                     <img src="fotos/aniversariante_do_mes.png" class="thumbnail-img" alt="Aniversariante_do_mes" data-target-id="evento-6">
+                    <div class="info-evento">
+                        <p><strong>DIA DE BOLO:</strong> Feliz Aniversario.</p>
+                        <p><strong>RENATINHA:</strong> Que possamos comemorar mais e mais anos juntos. São os fotos da familia SENZALA.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="galeria-nav" class="container mt-5 mb-5">
+        <h2 class="text-center mb-4">Nossa Arte em Ação</h2>
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="gallery-nav-item">
+                    <a href="#galeria-mestres">
+                        <h4>Mestres e Instrutores</h4>
+                    </a>
+                    
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="gallery-nav-item">
+                    <a href="#galeria-alunos">
+                        <h4>Alunos</h4>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="gallery-nav-item">
+                    <a href="#galeria-atividades">
+                        <h4>Atividades</h4>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="gallery-nav-item">
+                    <a href="#galeria-videos">
+                        <h4>Vídeos</h4>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="galeria-mestres" class="container mt-5 mb-5 pt-4">
+        <h2 class="text-center mb-4">Galeria: Mestres </h2>
+        <div class="row">
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="master-card">
+                    <img src="fotos/logo_amendoin.png" alt="Foto de outro Mestre">
+                    <img src="fotos/mestre_amendoin.png" alt="Foto de outro Mestre">
+                    <div class="master-name">
+                        <h5>Mestre Amendoin</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="master-card">
+                    <img src="fotos/logo_Espaço.jpg" alt="Foto de outro Mestre">
+                    <img src="fotos/mestre_pixote.png" alt="Foto de outro Mestre">
+                    <div class="master-name">
+                        <h5>Mestre Pixote</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="master-card">
+                    <img src="fotos/mestre_Emerson.jpg" alt="Foto do Mestre Emerson">
+                    <img src="fotos/mestre_Emerson.png" alt="Foto do Mestre Emerson">
+                    <div class="master-name">
+                        <h5>Mestre Emerson</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="master-card">
+                    <img src="fotos/logo_senzala.png" alt="Foto de outro Mestre">
+                    <img src="fotos/mestre_catito.png" alt="Foto de outro Mestre">
+                    <div class="master-name">
+                        <h5>Mestre Catito</h5>
+                    </div>
+                </div>
+            </div>
+
+                       
+
+        </div>
+    </section>
+
+    <section id="galeria-alunos" class="container-fluid mt-5 mb-5 pt-4" style="background-color: #f8f9fa; padding-bottom: 30px; border-radius: 15px;">
+        <h2 class="text-center mb-4">Galeria: Alunos</h2>
+        
+        <div class="netflix-gallery">
+            <div class="netflix-rail">
+
+                <div class="student-card">
+                    <img src="fotos/dedicação.jpg" alt="Foto do Aluno 1">
+                    <div class="student-info">
+                        <h6>Turma da ESTRUTURAL</h6>
+                        <p>O Orgulho do Mestre</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/ferrugem.jpg" alt="Foto do Aluno 2">
+                    <div class="student-info">
+                        <h6>FERRUGEM</h6>
+                        <p>Categoria Adulta - Graduação - Azul</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/Renatinha.png" alt="Foto do Aluno 3">
+                    <div class="student-info">
+                        <h6>RENATINHA pata manssa</h6>
+                        <p>Aluna de categoria jovem - Graduação - laranja e amarela</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/brendo.png" alt="Foto do Aluno 4">
+                    <div class="student-info">
+                        <h6>BRENDO Tonelada</h6>
+                        <p>Graduação - laranja e amarela</p>
+                    </div>
+                </div>
+                
+                <div class="student-card">
+                    <img src="fotos/YAGO.jpg" alt="Foto do Aluno 5">
+                    <div class="student-info">
+                        <h6>YAGO Biro Biro</h6>
+                        <p>Categoria jovem - Graduação Amarela</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/pequena.png" alt="Foto do Aluno 6">
+                    <div class="student-info">
+                        <h6>Alessandra - Joaninha</h6>
+                        <p>Categoria iniciante - Graduação - laranja</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/formiga.png" alt="Foto do Aluno 7">
+                    <div class="student-info">
+                        <h6>FORMIGA</h6>
+                        <p>Categoria iniciante - 1° Graduação</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/fabin.png" alt="Foto do Aluno 7">
+                    <div class="student-info">
+                        <h6>MARIPOSA</h6>
+                        <p>Categoria jovem - Graduação laranja e amarela</p>
+                    </div>
+                </div>
+                
+                </div>
+        </div>
+    </section>
+
+    <section id="galeria-alunos" class="container-fluid mt-5 mb-5 pt-4" style="background-color: #f8f9fa; padding-bottom: 30px; border-radius: 15px;">
+                
+        <div class="netflix-gallery">
+            <div class="netflix-rail">
+
+                <div class="student-card">
+                    <img src="fotos/Bambam1.jpg" alt="Foto do Aluno 1">
+                    <div class="student-info">
+                        <h6>Turma da SANTA MARIA</h6>
+                        <p>Instrutor BAMBAM</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/isntrutor_BamBam.png" alt="Foto do Aluno 2">
+                    <div class="student-info">
+                        <h6>Instrutor BAMBAM</h6>
+                        <p>Categoria Adulta - Graduação - Verde-Roxa</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/camila.jpg" alt="Foto do Aluno 3">
+                    <div class="student-info">
+                        <h6>CAMILA</h6>
+                        <p>Aluna de categoria adulta- nossa rouxinou - Graduação - laranja e amarela</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/rosane.png" alt="Foto do Aluno 4">
+                    <div class="student-info">
+                        <h6>ROSANE</h6>
+                        <p>Categoria adulta - Graduação - laranja e amarela</p>
+                    </div>
+                </div>
+                
+                <div class="student-card">
+                    <img src="fotos/Thalis.jpg" alt="Foto do Aluno 5">
+                    <div class="student-info">
+                        <h6>THALIS Lagartixa</h6>
+                        <p>Categoria Adulta - Graduação Azul</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/bruno.png" alt="Foto do Aluno 6">
+                    <div class="student-info">
+                        <h6>BRUNO Pesado</h6>
+                        <p>Categoria adulta - Graduação - laranja-Azul</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos\maguila.png" alt="Foto do Aluno 6">
+                    <div class="student-info">
+                        <h6>Maquila</h6>
+                        <p>Categoria juvenil - Graduação - Amarela</p>
+                    </div>
+                </div>
+                                
+            </div>
+        </div>
+    </section>
+
+   <section id="galeria-atividades" class="container-fluid mt-5 mb-5 pt-4" style="background-color: #f8f9fa; padding-bottom: 30px; border-radius: 15px;">
+        <h2 class="text-center mb-4">Galeria: Atividades</h2>
+        
+        <div class="netflix-gallery">
+            <div class="netflix-rail">
+
+                <div class="student-card">
+                    <img src="fotos/roda_de_setembro.jpg" alt="Foto do Aluno 1">
+                    <div class="student-info">
+                        <h6>Roda do Mes</h6>
+                        <p>Encontro do mes de setembro quadra do CRUZEIRO</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/batucada.jpg" alt="Foto do Aluno 2">
+                    <div class="student-info">
+                        <h6>Praticando percução com o Professor DUDU</h6>
+                        <p>Colegio da Estrutural</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/semeando_arte.jpg" alt="Foto do Aluno 3">
+                    <div class="student-info">
+                        <h6>Mestre CATITO</h6>
+                        <p>Projeto semeando arte</p>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="fotos/logo_aulas.jpg" alt="Foto do Aluno 4">
+                    <div class="student-info">
+                        <h6>CONVITE REPRESENTATORIO</h6>
+                        <p>Venha praticar CAPOIERA</p>
+                    </div>
+                </div>
+                
+                <div class="student-card">
+                    <img src="fotos/Aulas_ritimos.jpg" alt="Foto do Aluno 5">
+                    <div class="student-info">
+                        <h6>NÂO PERCA O EVENTO</h6>
+                        <p>OFICINA DE RITIMOS E BATUQUES DA CAPOEIRA</p>
+                    </div>
+                </div> 
+
+                <div class="student-card">
+                    <img src="fotos/batizado.jpg" alt="Foto do Aluno 5">
+                    <div class="student-info">
+                        <h6>ESPECIALMENTE PARA O ALUNO DEDICADO</h6>
+                        <p>EVENTO DE GRADUÇÃO E TROCA DE CORDA</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria-videos" class="container mt-5 mb-5 pt-4" style="background-color: #f8f9fa; padding-bottom: 30px; border-radius: 15px;">
+        <h2 class="text-center mb-4">Galeria: Vídeos</h2>
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="video-card">
+                    <div class="ratio ratio-16x9">
+                        <video src="videos/roda_mes_setembro.mp4" controls style="width:100%; height:100%;"></video>
+                    </div>
+                    <div class="video-title">
+                        <h6>Roda do Mês - Setembro</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="video-card">
+                    <div class="ratio ratio-16x9">
+                        <video src="videos/turma do Cruzeiro.mp4" controls style="width:100%; height:100%;"></video>
+                    </div>
+                    <div class="video-title">
+                        <h6>Treino no Ginasio do Cruzeiro</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="video-card">
+                    <div class="ratio ratio-16x9">
+                        <video src="videos/treino_Estrutural.mp4" controls style="width:100%; height:100%;"></video>
+                        
+                    </div>
+                    <div class="video-title">
+                        <h6>Turma da ESTRUTURAL</h6>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="video-card">
+                    <div class="ratio ratio-16x9">
+                        <video src="videos/dedicacao.mp4" controls style="width:100%; height:100%;"></video>
+                    </div>
+                    <div class="video-title">
+                        <h6>DEDICAÇÂO</h6>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer class="text-center p-3">
+        <p>&copy; 2025 Semeando Arte com a Senzala. Todos os direitos reservados.</p>
+    </footer>
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
