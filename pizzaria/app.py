@@ -236,16 +236,16 @@ def inject_aniversariantes():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     
-    # Pega o mês atual (ex: '04')
-    mes_atual = datetime.now().strftime('%m')
+    # Pega o dia e mês atual no formato '-MM-DD' (ex: '-04-02') 
+    hoje = datetime.now().strftime('-%m-%d')
     
-    # Conta quantos clientes fazem aniversário neste mês
-    # Usamos o LIKE '%-MM-%' para filtrar o mês na string AAAA-MM-DD
-    cursor.execute("SELECT COUNT(*) FROM clientes WHERE data_aniversario LIKE ?", (f'%-{mes_atual}-%',))
-    total_mes = cursor.fetchone()[0]
+    # Conta quantos clientes fazem aniversário HOJE 
+    # Usamos o LIKE '%-MM-DD' para filtrar o final da data AAAA-MM-DD
+    cursor.execute("SELECT COUNT(*) FROM clientes WHERE data_aniversario LIKE ?", (f'%{hoje}',))
+    total_hoje = cursor.fetchone()[0]
     
     conn.close()
-    return dict(total_aniversariantes_mes=total_mes)
+    return dict(total_aniversariantes_mes=total_hoje) 
 
 if __name__ == '__main__':
     init_db()

@@ -70,8 +70,8 @@
                 <td>{{ cliente['telefone'] }}</td>
                 <td>{{ cliente['data_aniversario'] }}</td>
                 <td>
-                    {# Formata a data de cadastro para o padrão brasileiro #}
-                    Cliente desde {{ cliente['data_cadastro'][:10].split('-')|reverse|join('/') }}
+                    {# Divide por '-', inverte a ordem e junta com '/' #}
+                    {{ cliente['data_aniversario'].split('-')|reverse|join('/') }}
                 </td>
                 <td>
                     <a href="/admin/excluir_cliente/{{ cliente['id'] }}" 

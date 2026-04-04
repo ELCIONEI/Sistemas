@@ -16,6 +16,36 @@ const PizzaCart = {
     },
 
     setupButtons() {
+
+        // Dentro de setupButtons ou logo abaixo dele
+    const btnMeioMeio = document.getElementById('add-meio-a-meio');
+    if (btnMeioMeio) {
+        btnMeioMeio.onclick = () => {
+            const s1 = document.getElementById('sabor1');
+            const s2 = document.getElementById('sabor2');
+            
+            const sabor1Nome = s1.value;
+            const sabor2Nome = s2.value;
+            const preco1 = parseFloat(s1.options[s1.selectedIndex].getAttribute('data-preco'));
+            const preco2 = parseFloat(s2.options[s2.selectedIndex].getAttribute('data-preco'));
+
+            if (!sabor1Nome || !sabor2Nome) {
+                alert("Por favor, selecione os dois sabores!");
+                return;
+            }
+
+            // Lógica da mais cara:
+            const precoFinal = Math.max(preco1, preco2);
+            const nomeFinal = `Pizza 1/2 ${sabor1Nome} | 1/2 ${sabor2Nome}`;
+
+            this.items.push({ nome: nomeFinal, preco: precoFinal });
+            this.saveAndSync();
+            alert("Pizza Meio a Meio adicionada!");
+        };
+    }
+
+
+
         document.addEventListener('click', async (e) => {
             const target = e.target.closest('.btn, .btn-qty, .btn-secondary, .btn-remove');
             if (!target) return;
