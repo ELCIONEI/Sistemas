@@ -1,0 +1,45 @@
+Configurando o GIT 
+
+Após instalação do GIT. 
+
+https://git-scm.com/downloads  
+
+Dentro da sua pasta de arquivos  
+
+*clic com o botão direito->abrir Open Git Bash here 
+
+No terminal, configure o Git para saber seu nome e e-mail: 
+
+*git config --global user.name "Seu Nome" 
+
+*git config --global user.email seuemail@exemplo.com 
+
+git init -> Para iniciar na branch (main) ou (master) 
+
+------------------------------------------------------------ 
+
+Agora vá ao GituHub 
+
+No seu novo repositório, clique em Code e copie o link ->    https://github.com/suaidentificação/seuprojeto.git. 
+
+No terminal, digite o comando para clonar o repositório (cole o link depois de git clone. 
+
+*git clone https://github.com/suaidentificação/seuprojeto.git. 
+
+git remote add origin https://github.com/suaidentificação/seuprojeto.git. ->Para sincronizar o gitbash com o github. 
+
+git add README.md ->Para adicionar os arquivos na área de (states) área de transferência. 
+
+git checkout main ->para verificar a lista de arquivos que estarão prontos para sincronizar. 
+
+git push -u origin main -> para mandar para o git hub, possível que abrirá tela de login. 
+
+Para finalizar tudo use o comando 
+
+git commit -m "nome que desejar" ->para sincronizar no git  
+
+Basta atualizar a página do git, se tudo deu certo é para estar visível os arquivos que empurrou com o nome que escolheu no git commit -m. 
+
+Caso você tenha algum arquivo clonado 
+
+O comando GIT PULL atualizará as mudanças feitas no original; 
